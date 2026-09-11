@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANTHORX — Train Different | Luxury Performance Wearable</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        black: '#000000',
+                        obsidian: '#08080a',
+                        surface: '#0f0f13',
+                        surfaceElevated: '#17171d',
+                        platinum: '#f4f4f5',
+                        silver: '#a1a1aa',
+                        charcoal: '#27272a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'SF Mono', 'Courier New', 'monospace'],
+                    },
+                    animation: {
+                        'border-beam': 'borderBeam 5s linear infinite',
+                        'shimmer': 'shimmer 2.2s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 7s ease-in-out infinite',
+                        'radar': 'radarPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite',
+                        'glow-pulse': 'glowPulse 3.5s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        borderBeam: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(200%)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        radarPing: {
+                            '0%': { transform: 'scale(0.8)', opacity: '1' },
+                            '100%': { transform: 'scale(2.6)', opacity: '0' },
+                        },
+                        glowPulse: {
+                            '0%': { opacity: '0.15', transform: 'scale(0.95)' },
+                            '100%': { opacity: '0.35', transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Precision grain film overlay */
+        .bg-grain {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+        }
+
+        /* Platinum / Liquid Chrome Kinetic Text */
+        .text-kinetic-luxury {
+            background: linear-gradient(110deg, #71717a 0%, #ffffff 30%, #e4e4e7 45%, #a1a1aa 60%, #ffffff 80%, #52525b 100%);
+            background-size: 260% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: kineticSweep 6s linear infinite;
+        }
+
+        @keyframes kineticSweep {
+            0% {
+                background-position: 100% 0;
+            }
+
+            100% {
+                background-position: -160% 0;
+            }
+        }
+
+        /* Liquid Silver Border Beam Button */
+        .beam-btn-luxury {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .beam-btn-luxury::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: conic-gradient(from 90deg at 50% 50%, #000000 0%, #ffffff 40%, #71717a 70%, #000000 100%);
+            border-radius: inherit;
+            animation: borderBeam 3.5s linear infinite;
+            z-index: -2;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .beam-btn-luxury:hover::before {
+            opacity: 1;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+        }
+
+        .beam-btn-luxury::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: #000000;
+            border-radius: inherit;
+            z-index: -1;
+            transition: background 0.3s ease;
+        }
+
+        .beam-btn-luxury:hover::after {
+            background: #09090b;
+        }
+
+        /* High-speed specular shimmer across pure white surfaces */
+        .shimmer-sweep-white {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+        }
+
+        .shimmer-sweep-white::after {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -80%;
+            width: 50%;
+            height: 220%;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.75) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transform: rotate(25deg);
+            pointer-events: none;
+        }
+
+        .shimmer-sweep-white:hover::after {
+            animation: sweep 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes sweep {
+            0% {
+                left: -80%;
+            }
+
+            100% {
+                left: 160%;
+            }
+        }
+
+        /* Ambient White Specular Halos */
+        .glow-halo-white {
+            filter: blur(140px);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 70%);
+        }
+
+        /* Card Spotlight Interactive Matrix */
+        .spotlight-dark {
+            position: relative;
+            background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.06), transparent 40%),
+                #08080a;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+        }
+
+        .spotlight-dark:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-black text-white font-sans antialiased selection:bg-white selection:text-black bg-grain overflow-x-hidden">
+
+    <!-- Interactive Biometric Kinetic Wave Canvas (Pure Monochrome Frequencies) -->
+    <canvas id="kineticCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-50"></canvas>
+
+    <!-- Ambient Luxury Ethereal Halos -->
+    <div
+        class="fixed top-1/6 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[850px] glow-halo-white rounded-full pointer-events-none z-0 animate-glow-pulse">
+    </div>
+    <div class="fixed bottom-12 right-12 w-[550px] h-[550px] glow-halo-white rounded-full pointer-events-none z-0">
+    </div>
+
+    <!-- Ultra-Minimal Top Navigation Bar -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 backdrop-blur-2xl bg-black/80 border-b border-white/[0.08] transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Brand Mark -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div
+                    class="relative flex items-center justify-center w-8 h-8 rounded-lg bg-surface border border-white/20 group-hover:border-white transition-colors duration-300">
+                    <span class="w-2 h-2 rounded-full bg-white shadow-[0_0_12px_#ffffff]"></span>
+                    <span class="absolute w-2 h-2 rounded-full bg-white animate-radar"></span>
+                </div>
+                <div class="flex flex-col">
+                    <span
+                        class="text-lg font-black tracking-[0.25em] text-white uppercase group-hover:text-platinum transition-colors">ANTHORX</span>
+                    <span class="text-[8px] font-mono tracking-[0.3em] text-zinc-500 uppercase -mt-0.5">LABS //
+                        ZERO</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav
+                class="hidden md:flex items-center space-x-12 text-xs font-mono uppercase tracking-[0.2em] text-zinc-400">
+                <a href="#vision" class="hover:text-white transition-colors duration-200">About</a>
+                <a href="#philosophy" class="hover:text-white transition-colors duration-200">Vision</a>
+                <a href="#early-access" class="hover:text-white transition-colors duration-200">Founding</a>
+                <a href="#faq" class="hover:text-white transition-colors duration-200">FAQ</a>
+            </nav>
+
+            <!-- Beam Button CTA -->
+            <div class="flex items-center gap-4">
+                <a href="#waitlist"
+                    class="beam-btn-luxury rounded-full px-5 py-2.5 text-[11px] font-mono font-semibold tracking-widest uppercase text-white flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    <span>Reserve Access</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex flex-col justify-between items-center text-center px-6 pt-36 pb-16 z-10">
+        <div></div> <!-- Top balance spacer -->
+
+        <div class="max-w-4xl mx-auto space-y-10">
+            <!-- Luxury Status Indicator Badge -->
+            <div
+                class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-surface border border-white/15 backdrop-blur-xl hover:border-white/40 transition-all duration-300 shadow-[0_0_25px_rgba(0,0,0,0.9)]">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                </span>
+                <span class="text-[10px] font-mono tracking-[0.25em] text-zinc-300 uppercase">
+                    BATCH 01 / <span class="text-white font-bold">84% ALLOCATED</span>
+                </span>
+                <span class="text-zinc-700 font-mono">|</span>
+                <span class="text-[10px] font-mono tracking-widest text-zinc-400">SCREENLESS ARCHITECTURE</span>
+            </div>
+
+            <!-- Kinetic Chrome Hero Title -->
+            <div class="space-y-5">
+                <h1
+                    class="text-6xl sm:text-8xl md:text-9xl font-black tracking-tighter text-kinetic-luxury leading-none select-none">
+                    TRAIN DIFFERENT.
+                </h1>
+                <p class="text-base sm:text-xl text-zinc-400 max-w-xl mx-auto font-light leading-relaxed">
+                    The next generation of performance technology is almost here. Pure biological telemetry, <span
+                        class="text-white font-medium">zero notifications.</span>
+                </p>
+            </div>
+
+            <!-- Clean Tagline -->
+            <div class="space-y-2 pt-2">
+                <div
+                    class="inline-block text-[11px] uppercase font-mono tracking-[0.25em] text-white bg-white/5 border border-white/20 px-5 py-2 rounded-full">
+                    PRODUCT REVEAL — COMING SOON
+                </div>
+                <p class="text-xs text-zinc-500 font-mono tracking-wide">
+                    A new wearable experience designed for athletes who demand more.
+                </p>
+            </div>
+
+            <!-- High-Impact Motion CTA Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5 pt-4">
+                <!-- Pure Bright White Primary Button -->
+                <a href="#waitlist"
+                    class="shimmer-sweep-white group relative w-full sm:w-auto px-10 py-4 rounded-full bg-white text-black font-extrabold text-xs uppercase tracking-[0.18em] transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] shadow-[0_0_35px_rgba(255,255,255,0.4)] flex items-center justify-center gap-3">
+                    <span>Join the Waitlist</span>
+                    <i data-lucide="arrow-right"
+                        class="w-4 h-4 text-black group-hover:translate-x-1.5 transition-transform duration-200"></i>
+                </a>
+
+                <!-- Minimal Ghost Secondary Button -->
+                <a href="#philosophy"
+                    class="group w-full sm:w-auto px-9 py-4 rounded-full bg-surface border border-white/20 text-white font-semibold text-xs uppercase tracking-[0.18em] hover:bg-surfaceElevated hover:border-white transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2.5">
+                    <i data-lucide="compass" class="w-4 h-4 text-zinc-400 group-hover:text-white transition-colors"></i>
+                    <span>See Our Vision</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Minimal Downward Indicator -->
+        <div
+            class="flex flex-col items-center space-y-3 text-zinc-500 text-[11px] tracking-[0.25em] font-mono uppercase pt-14">
+            <span class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                Launching Soon • Limited Early Access
+            </span>
+            <div class="w-7 h-11 rounded-full border border-white/20 flex items-start justify-center p-2">
+                <div class="w-1 h-2.5 rounded-full bg-white animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenless Wearable Cinematic Silhouette (Monochrome Precision) -->
+    <section class="relative py-28 px-6 overflow-hidden z-10">
+        <div class="max-w-5xl mx-auto text-center space-y-10">
+            <div class="relative mx-auto w-full max-w-3xl h-72 sm:h-96 flex items-center justify-center">
+                <!-- Outer Radial Ethereal Glow -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-white/[0.07] via-white/[0.12] to-white/[0.05] rounded-3xl blur-3xl opacity-70 animate-pulse-slow">
+                </div>
+
+                <!-- Wearable Silhouette Graphic with Specular Rim Reflections -->
+                <div
+                    class="relative z-10 w-full h-full flex flex-col items-center justify-center p-8 bg-surface/80 border border-white/15 rounded-3xl backdrop-blur-2xl shadow-2xl group hover:border-white/40 transition-all duration-500">
+                    <!-- Band outline simulation -->
+                    <div
+                        class="relative w-72 sm:w-96 h-28 sm:h-36 rounded-2xl bg-gradient-to-r from-[#0d0d10] via-black to-[#0d0d10] border border-white/25 shadow-2xl flex items-center justify-between px-6 overflow-hidden">
+                        <!-- Polished Beveled Metal Highlight Line -->
+                        <div
+                            class="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-80">
+                        </div>
+                        <div
+                            class="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-zinc-400 to-transparent opacity-40">
+                        </div>
+
+                        <!-- Left micro clasp in brushed steel -->
+                        <div class="w-3 h-14 rounded bg-zinc-900 border-r border-white/20"></div>
+
+                        <!-- Screenless Biometric Sensor Array (Pure White Specular Pulse) -->
+                        <div class="flex flex-col items-center gap-3">
+                            <div
+                                class="flex items-center gap-3.5 p-3.5 rounded-xl bg-black/90 border border-white/20 shadow-[0_0_25px_rgba(0,0,0,0.9)]">
+                                <!-- Sensor 1: Specular White Pulse -->
+                                <div class="w-3.5 h-3.5 rounded-full bg-white shadow-[0_0_15px_#ffffff] animate-pulse">
+                                </div>
+                                <!-- Sensor 2: Liquid Platinum Optical Array -->
+                                <div class="w-3.5 h-3.5 rounded-full bg-zinc-400 shadow-[0_0_12px_rgba(255,255,255,0.6)] animate-pulse"
+                                    style="animation-delay: 0.4s"></div>
+                                <!-- Sensor 3: Deep White Telemetry Pulse -->
+                                <div class="w-3.5 h-3.5 rounded-full bg-white/90 shadow-[0_0_15px_#ffffff] animate-pulse"
+                                    style="animation-delay: 0.8s"></div>
+                            </div>
+                            <span class="text-[9px] font-mono tracking-[0.3em] text-zinc-400 uppercase">BIOMETRIC ENGINE
+                                // CONTINUOUS</span>
+                        </div>
+
+                        <!-- Right micro clasp -->
+                        <div class="w-3 h-14 rounded bg-zinc-900 border-l border-white/20"></div>
+                    </div>
+
+                    <!-- Silhouette Spec Tag -->
+                    <div class="mt-6 flex items-center gap-3 text-[11px] font-mono text-zinc-500 tracking-wider">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]"></span>
+                        <span>CHASSIS: AEROSPACE GRADE 5 TITANIUM & MEDICAL ELASTOMER</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tease Section (High-Contrast Pure White Luxury) -->
+    <section
+        class="bg-white text-black py-32 px-6 rounded-t-[2.5rem] md:rounded-t-[4rem] relative z-20 shadow-[0_-25px_70px_rgba(0,0,0,0.95)]">
+        <div class="max-w-6xl mx-auto space-y-20">
+            <!-- Main Statement -->
+            <div class="max-w-3xl space-y-6">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-zinc-100 border border-zinc-300 text-[10px] font-mono font-bold tracking-[0.25em] uppercase text-zinc-900">
+                    <span class="w-1.5 h-1.5 rounded-full bg-black"></span>
+                    Zero Distraction Architecture
+                </div>
+                <h2 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-tight">
+                    NOT A WATCH.<br>
+                    <span class="underline decoration-black decoration-4 underline-offset-8">NOT A DISTRACTION.</span>
+                </h2>
+                <p class="text-lg sm:text-xl text-zinc-600 font-normal leading-relaxed">
+                    AnthorX is built for athletes who care about performance, recovery, endurance, and consistency—not
+                    notifications.
+                </p>
+            </div>
+
+            <!-- Three Premium Minimal Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
+                <!-- Card 1: Performance -->
+                <div
+                    class="group bg-zinc-50 p-10 rounded-3xl border border-zinc-200 hover:border-black transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300 shadow-md">
+                        <i data-lucide="activity" class="w-6 h-6 stroke-[2.2]"></i>
+                    </div>
+                    <h3 class="text-2xl font-black tracking-tight text-black mb-3">Performance</h3>
+                    <p class="text-zinc-600 text-sm leading-relaxed">Continuous training intelligence.</p>
+                </div>
+
+                <!-- Card 2: Recovery -->
+                <div
+                    class="group bg-zinc-50 p-10 rounded-3xl border border-zinc-200 hover:border-black transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300 shadow-md">
+                        <i data-lucide="zap" class="w-6 h-6 stroke-[2.2]"></i>
+                    </div>
+                    <h3 class="text-2xl font-black tracking-tight text-black mb-3">Recovery</h3>
+                    <p class="text-zinc-600 text-sm leading-relaxed">Know when to push and when to recover.</p>
+                </div>
+
+                <!-- Card 3: Built to Disappear -->
+                <div
+                    class="group bg-zinc-50 p-10 rounded-3xl border border-zinc-200 hover:border-black transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-black text-white flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300 shadow-md">
+                        <i data-lucide="eye-off" class="w-6 h-6 stroke-[2.2]"></i>
+                    </div>
+                    <h3 class="text-2xl font-black tracking-tight text-black mb-3">Built to Disappear</h3>
+                    <p class="text-zinc-600 text-sm leading-relaxed">Screenless. Lightweight. Always on.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Philosophy Section -->
+    <section id="philosophy"
+        class="bg-black text-white py-36 px-6 relative z-10 border-b border-zinc-900 overflow-hidden">
+        <!-- Floating Ambient White Aura -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] glow-halo-white rounded-full pointer-events-none">
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center space-y-10 relative z-10">
+            <div
+                class="inline-flex items-center gap-2 text-[10px] font-mono tracking-[0.25em] text-zinc-400 uppercase bg-white/5 px-4 py-1.5 rounded-full border border-white/10">
+                CORE PHILOSOPHY
+            </div>
+            <blockquote class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                “The best technology disappears into your routine.”
+            </blockquote>
+            <p class="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
+                AnthorX becomes part of every workout, every recovery, and every morning—delivering uncompromising
+                athletic clarity without ever intruding on your presence.
+            </p>
+        </div>
+    </section>
+
+    <!-- Lifestyle Visual Section -->
+    <section id="vision" class="relative py-36 px-6 bg-obsidian text-white overflow-hidden border-b border-zinc-900">
+        <div class="max-w-6xl mx-auto relative z-10 space-y-16">
+            <div class="text-center space-y-4 max-w-2xl mx-auto">
+                <span
+                    class="inline-block p-1 px-4 rounded-full border border-white/20 bg-white/5 text-[10px] text-zinc-400 font-mono tracking-[0.25em] uppercase">
+                    PROVEN UNDER STRAIN
+                </span>
+                <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white">
+                    Designed for those who train every day.
+                </h2>
+            </div>
+
+            <!-- Dynamic Routine Grid in Obsidian & Glass -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Routine Item 1 -->
+                <div
+                    class="p-8 bg-surface rounded-2xl border border-white/10 hover:border-white/40 hover:bg-surfaceElevated transition-all duration-300 group">
+                    <div class="text-xs font-mono text-zinc-500 mb-6 flex items-center justify-between">
+                        <span>05:30 AM</span>
+                        <i data-lucide="sun" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white group-hover:text-platinum transition-colors">Morning runs.
+                    </h4>
+                    <p class="text-xs text-zinc-400 mt-2 font-light">Immediate physiological response metrics with zero
+                        lag.</p>
+                </div>
+
+                <!-- Routine Item 2 -->
+                <div
+                    class="p-8 bg-surface rounded-2xl border border-white/10 hover:border-white/40 hover:bg-surfaceElevated transition-all duration-300 group">
+                    <div class="text-xs font-mono text-zinc-500 mb-6 flex items-center justify-between">
+                        <span>10:45 PM</span>
+                        <i data-lucide="moon" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white group-hover:text-platinum transition-colors">Night recovery.
+                    </h4>
+                    <p class="text-xs text-zinc-400 mt-2 font-light">Passive circadian rhythm and deep autonomic sleep
+                        staging.</p>
+                </div>
+
+                <!-- Routine Item 3 -->
+                <div
+                    class="p-8 bg-surface rounded-2xl border border-white/10 hover:border-white/40 hover:bg-surfaceElevated transition-all duration-300 group">
+                    <div class="text-xs font-mono text-zinc-500 mb-6 flex items-center justify-between">
+                        <span>ALT. 3400M</span>
+                        <i data-lucide="mountain" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white group-hover:text-platinum transition-colors">Mountain
+                        trails.</h4>
+                    <p class="text-xs text-zinc-400 mt-2 font-light">Sub-zero temperature tolerance and rugged shock
+                        absorption.</p>
+                </div>
+
+                <!-- Routine Item 4 -->
+                <div
+                    class="p-8 bg-surface rounded-2xl border border-white/10 hover:border-white/40 hover:bg-surfaceElevated transition-all duration-300 group">
+                    <div class="text-xs font-mono text-zinc-500 mb-6 flex items-center justify-between">
+                        <span>MAX LOAD</span>
+                        <i data-lucide="dumbbell" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white group-hover:text-platinum transition-colors">Strength
+                        sessions.</h4>
+                    <p class="text-xs text-zinc-400 mt-2 font-light">Zero wrist obstruction during heavy cleans,
+                        snatches, and presses.</p>
+                </div>
+            </div>
+
+            <!-- Kinetic Word Mantra -->
+            <div class="text-center pt-4">
+                <span
+                    class="inline-flex items-center gap-3 text-2xl sm:text-3xl font-black text-white tracking-[0.2em] uppercase">
+                    <span>REPEAT.</span>
+                    <span class="w-2 h-2 rounded-full bg-white"></span>
+                    <span>ADAPT.</span>
+                    <span class="w-2 h-2 rounded-full bg-zinc-500"></span>
+                    <span>CONQUER.</span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Timeline -->
+    <section class="py-32 px-6 bg-black text-white border-b border-zinc-900">
+        <div class="max-w-5xl mx-auto space-y-16">
+            <div class="text-center space-y-4">
+                <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-[0.25em]">DEPLOYMENT TIMELINE</span>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Roadmap to Launch</h2>
+                <p class="text-zinc-500 text-xs font-mono">Precision execution milestones.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                <!-- Timeline Step 1 -->
+                <div
+                    class="p-7 rounded-2xl bg-surface border border-white/40 space-y-3 relative group hover:border-white transition-all shadow-[0_0_25px_rgba(255,255,255,0.08)]">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-white font-bold uppercase tracking-widest">TODAY</span>
+                        <span class="w-2 h-2 rounded-full bg-white animate-ping"></span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Join Waitlist</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed font-light">Lock priority reservation queue before
+                        public rollout.</p>
+                    <div class="text-[10px] font-mono text-white pt-2">● STATUS: OPEN NOW</div>
+                </div>
+
+                <!-- Timeline Step 2 -->
+                <div
+                    class="p-7 rounded-2xl bg-surface border border-white/10 space-y-3 relative group hover:border-white/30 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span
+                            class="text-[11px] font-mono text-zinc-500 font-bold uppercase tracking-widest">SOON</span>
+                        <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Product Reveal</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed font-light">Architectural breakdown, sensor array,
+                        and materials unveil.</p>
+                    <div class="text-[10px] font-mono text-zinc-500 pt-2">○ STATUS: IMMINENT</div>
+                </div>
+
+                <!-- Timeline Step 3 -->
+                <div
+                    class="p-7 rounded-2xl bg-surface border border-white/10 space-y-3 relative group hover:border-white/30 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-mono text-zinc-500 font-bold uppercase tracking-widest">EARLY
+                            ACCESS</span>
+                        <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Founding Invitations</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed font-light">Founding members receive private access
+                        codes to order.</p>
+                    <div class="text-[10px] font-mono text-zinc-500 pt-2">○ STATUS: QUEUED</div>
+                </div>
+
+                <!-- Timeline Step 4 -->
+                <div
+                    class="p-7 rounded-2xl bg-surface border border-white/10 space-y-3 relative group hover:border-white/30 transition-all">
+                    <div class="flex items-center justify-between">
+                        <span
+                            class="text-[11px] font-mono text-zinc-500 font-bold uppercase tracking-widest">ANTHORX</span>
+                        <span class="w-2 h-2 rounded-full bg-zinc-600"></span>
+                    </div>
+                    <h3 class="text-base font-bold text-white">The Future</h3>
+                    <p class="text-xs text-zinc-400 leading-relaxed font-light">The permanent standard of screenless
+                        physical tracking.</p>
+                    <div class="text-[10px] font-mono text-zinc-500 pt-2">○ STATUS: HORIZON</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Early Section (Stark Pure White Contrast) -->
+    <section id="early-access" class="bg-white text-black py-32 px-6">
+        <div class="max-w-6xl mx-auto space-y-20">
+            <div class="text-center max-w-2xl mx-auto space-y-4">
+                <span
+                    class="text-[10px] font-mono font-bold tracking-[0.25em] uppercase text-zinc-600 bg-zinc-100 px-4 py-1.5 rounded-full border border-zinc-300">
+                    FOUNDING ALLOCATION
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-black">Why Join Early</h2>
+                <p class="text-zinc-600 text-sm">Tangible, lifetime founding privileges for dedicated athletes.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Benefit 1 -->
+                <div
+                    class="bg-zinc-50 p-8 rounded-3xl border border-zinc-200 space-y-4 hover:shadow-xl hover:border-black transition-all group">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center font-mono font-bold text-sm">
+                        01</div>
+                    <h3 class="text-xl font-bold tracking-tight">Founding Access</h3>
+                    <p class="text-zinc-600 text-xs leading-relaxed">Private invitation to purchase before public queue
+                        opens worldwide.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div
+                    class="bg-zinc-50 p-8 rounded-3xl border border-zinc-200 space-y-4 hover:shadow-xl hover:border-black transition-all group">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center font-mono font-bold text-sm">
+                        02</div>
+                    <h3 class="text-xl font-bold tracking-tight">Exclusive Pricing</h3>
+                    <p class="text-zinc-600 text-xs leading-relaxed">Guaranteed founding member hardware pricing locked
+                        for life.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div
+                    class="bg-zinc-50 p-8 rounded-3xl border border-zinc-200 space-y-4 hover:shadow-xl hover:border-black transition-all group">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center font-mono font-bold text-sm">
+                        03</div>
+                    <h3 class="text-xl font-bold tracking-tight">Priority Shipping</h3>
+                    <p class="text-zinc-600 text-xs leading-relaxed">Immediate fulfillment from our initial precision
+                        manufacturing run.</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div
+                    class="bg-zinc-50 p-8 rounded-3xl border border-zinc-200 space-y-4 hover:shadow-xl hover:border-black transition-all group">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-black text-white flex items-center justify-center font-mono font-bold text-sm">
+                        04</div>
+                    <h3 class="text-xl font-bold tracking-tight">Shape The Future</h3>
+                    <p class="text-zinc-600 text-xs leading-relaxed">Direct software firmware input with our sports
+                        physiology engineers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form Section -->
+    <section id="waitlist"
+        class="bg-black text-white py-36 px-6 relative z-10 border-t border-zinc-900 overflow-hidden">
+        <!-- Background Radial Pulse in Stark Monochromatic White -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] glow-halo-white rounded-full pointer-events-none">
+        </div>
+
+        <div class="max-w-2xl mx-auto space-y-12 relative z-10">
+            <div class="text-center space-y-4">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-mono text-white uppercase tracking-widest">
+                    STRICTLY LIMITED TO 10,000 FOUNDERS
+                </span>
+                <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white">Become a Founding Member</h2>
+                <p class="text-zinc-400 text-sm sm:text-base font-light">
+                    Be among the first athletes worldwide to experience AnthorX before commercial release.
+                </p>
+            </div>
+
+            <!-- Waitlist Form Card -->
+            <form id="waitlistForm"
+                class="bg-surface/90 backdrop-blur-2xl p-8 sm:p-12 rounded-3xl border border-white/20 space-y-6 shadow-[0_0_60px_rgba(0,0,0,0.9)] relative">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-[11px] uppercase font-mono tracking-wider text-zinc-400 font-medium">First
+                            Name</label>
+                        <input type="text" id="firstName" required placeholder="Marcus"
+                            class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[11px] uppercase font-mono tracking-wider text-zinc-400 font-medium">Last
+                            Name</label>
+                        <input type="text" id="lastName" required placeholder="Vance"
+                            class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[11px] uppercase font-mono tracking-wider text-zinc-400 font-medium">Email
+                        Address</label>
+                    <input type="email" id="email" required placeholder="athlete@domain.com"
+                        class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label
+                            class="text-[11px] uppercase font-mono tracking-wider text-zinc-400 font-medium">Country</label>
+                        <input type="text" id="country" required placeholder="United Kingdom"
+                            class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3.5 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[11px] uppercase font-mono tracking-wider text-zinc-400 font-medium">Primary
+                            Sport</label>
+                        <select id="sport" required
+                            class="w-full bg-black/70 border border-white/15 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-white focus:ring-1 focus:ring-white transition-all">
+                            <option value="" disabled selected>Select primary discipline</option>
+                            <option value="running">Running / Marathon</option>
+                            <option value="gym">Gym / Strength & Conditioning</option>
+                            <option value="cycling">Cycling / Triathlon</option>
+                            <option value="trekking">Trekking & Ultra-Endurance</option>
+                            <option value="football">Football / Team Sports</option>
+                            <option value="other">Other High-Output Sport</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3 pt-2">
+                    <input type="checkbox" id="updates" checked
+                        class="w-4 h-4 accent-white bg-black border-white/30 rounded cursor-pointer">
+                    <label for="updates" class="text-xs text-zinc-400 cursor-pointer select-none">I want early access
+                        updates and batch production dispatches.</label>
+                </div>
+
+                <!-- High-Impact Pure White Button -->
+                <div class="pt-3">
+                    <button type="submit" id="submitBtn"
+                        class="shimmer-sweep-white w-full py-4 rounded-xl bg-white text-black font-extrabold text-xs uppercase tracking-[0.2em] hover:bg-zinc-200 active:scale-[0.99] transition-all duration-300 shadow-[0_0_35px_rgba(255,255,255,0.35)] flex items-center justify-center gap-3">
+                        <span>Reserve My Spot</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <div class="flex items-center justify-center gap-6 pt-2 text-xs font-mono text-zinc-500">
+                    <span class="flex items-center gap-1.5"><i data-lucide="shield-check"
+                            class="w-3.5 h-3.5 text-white"></i> No spam</span>
+                    <span class="flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 text-zinc-300"></i>
+                        Limited invitations</span>
+                    <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-white"></i>
+                        100% Free to join</span>
+                </div>
+
+                <!-- Interactive Success State Overlay -->
+                <div id="successMessage"
+                    class="absolute inset-0 bg-surface rounded-3xl flex flex-col items-center justify-center p-8 text-center hidden space-y-6 z-20 border border-white/40">
+                    <div
+                        class="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shadow-[0_0_35px_#ffffff]">
+                        <i data-lucide="check" class="w-9 h-9 stroke-[3]"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-white">RESERVATION
+                            CONFIRMED</span>
+                        <h3 class="text-3xl font-black tracking-tight text-white">Welcome, Founding Member.</h3>
+                        <p class="text-xs text-zinc-400 max-w-md mx-auto">Your reservation ticket has been recorded.
+                            Check your inbox shortly for your priority onboarding number.</p>
+                    </div>
+                    <div class="p-4 bg-black rounded-xl border border-white/20 font-mono text-xs text-white">
+                        FOUNDING ID: #ANX-<span id="randomId">9421</span>
+                    </div>
+                    <button type="button" onclick="resetForm()"
+                        class="px-6 py-2.5 rounded-full bg-surface border border-white/20 text-xs text-white hover:border-white transition-all">
+                        Register Another Athlete
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Community Proof & Animated Numbers -->
+    <section class="py-32 px-6 bg-black text-white border-t border-zinc-900 relative">
+        <div class="max-w-6xl mx-auto space-y-16">
+            <div class="text-center space-y-2">
+                <span class="text-[10px] uppercase tracking-[0.25em] text-zinc-400 font-mono">SPECIFICATIONS &
+                    BENCHMARKS</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Built For Athletes</h2>
+            </div>
+
+            <!-- Numbers Cards with Dynamic Counter Values -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Stat 1 -->
+                <div
+                    class="p-8 rounded-3xl bg-surface border border-white/10 hover:border-white/40 transition-all space-y-3 group">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-5xl font-black font-mono text-white counter" data-target="99">0</span>
+                        <span class="text-2xl font-bold font-mono text-zinc-400">.8%</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Performance-first philosophy.</h3>
+                    <p class="text-xs text-zinc-500 leading-relaxed font-light">Laboratory photoplethysmography accuracy
+                        tested across high-intensity intervals.</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div
+                    class="p-8 rounded-3xl bg-surface border border-white/10 hover:border-white/40 transition-all space-y-3 group">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-5xl font-black font-mono text-white counter" data-target="1000">0</span>
+                        <span class="text-2xl font-bold font-mono text-zinc-400">Hz</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Recovery-focused ecosystem.</h3>
+                    <p class="text-xs text-zinc-500 leading-relaxed font-light">Continuous high-frequency HRV and
+                        nervous system autonomic tracking.</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div
+                    class="p-8 rounded-3xl bg-surface border border-white/10 hover:border-white/40 transition-all space-y-3 group">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-5xl font-black font-mono text-white counter" data-target="14">0</span>
+                        <span class="text-2xl font-bold font-mono text-zinc-400">Days</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Designed with endurance in mind.</h3>
+                    <p class="text-xs text-zinc-500 leading-relaxed font-light">Continuous 24/7 battery endurance on a
+                        single magnetic inductive charge.</p>
+                </div>
+
+                <!-- Stat 4 -->
+                <div
+                    class="p-8 rounded-3xl bg-surface border border-white/10 hover:border-white/40 transition-all space-y-3 group">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-5xl font-black font-mono text-white counter" data-target="0">0</span>
+                        <span class="text-2xl font-bold font-mono text-zinc-400">.0s</span>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Screenless wearable experience.</h3>
+                    <p class="text-xs text-zinc-500 leading-relaxed font-light">Zero attention-demanding buzzes,
+                        blue-light interruptions, or notification screens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-32 px-6 bg-obsidian text-white border-t border-zinc-900">
+        <div class="max-w-3xl mx-auto space-y-12">
+            <div class="text-center space-y-3">
+                <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-[0.25em]">CLARITY</span>
+                <h2 class="text-3xl sm:text-5xl font-black tracking-tight">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div
+                    class="border border-white/10 bg-surface rounded-2xl overflow-hidden hover:border-white/30 transition-all">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full p-6 text-left flex justify-between items-center font-medium focus:outline-none group">
+                        <span class="text-base font-bold text-zinc-200 group-hover:text-white transition-colors">What is
+                            AnthorX?</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="px-6 pb-6 text-sm text-zinc-400 hidden leading-relaxed border-t border-white/5 pt-4">
+                        A new performance wearable ecosystem engineered exclusively for athletes who prioritize
+                        biological data over wrist distractions.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div
+                    class="border border-white/10 bg-surface rounded-2xl overflow-hidden hover:border-white/30 transition-all">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full p-6 text-left flex justify-between items-center font-medium focus:outline-none group">
+                        <span class="text-base font-bold text-zinc-200 group-hover:text-white transition-colors">Is it a
+                            smartwatch?</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="px-6 pb-6 text-sm text-zinc-400 hidden leading-relaxed border-t border-white/5 pt-4">
+                        No. AnthorX is intentionally screenless. No feeds, emails, or vibration notifications—just pure
+                        physiological intelligence.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div
+                    class="border border-white/10 bg-surface rounded-2xl overflow-hidden hover:border-white/30 transition-all">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full p-6 text-left flex justify-between items-center font-medium focus:outline-none group">
+                        <span class="text-base font-bold text-zinc-200 group-hover:text-white transition-colors">When
+                            will it launch?</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="px-6 pb-6 text-sm text-zinc-400 hidden leading-relaxed border-t border-white/5 pt-4">
+                        Product reveal coming soon. Early waitlist members receive guaranteed priority access to Batch
+                        01.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div
+                    class="border border-white/10 bg-surface rounded-2xl overflow-hidden hover:border-white/30 transition-all">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full p-6 text-left flex justify-between items-center font-medium focus:outline-none group">
+                        <span class="text-base font-bold text-zinc-200 group-hover:text-white transition-colors">Is
+                            joining free?</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="px-6 pb-6 text-sm text-zinc-400 hidden leading-relaxed border-t border-white/5 pt-4">
+                        Yes. Reserving your founding position requires zero deposit or commitment.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div
+                    class="border border-white/10 bg-surface rounded-2xl overflow-hidden hover:border-white/30 transition-all">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full p-6 text-left flex justify-between items-center font-medium focus:outline-none group">
+                        <span class="text-base font-bold text-zinc-200 group-hover:text-white transition-colors">Who is
+                            it for?</span>
+                        <div
+                            class="w-8 h-8 rounded-full bg-black flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                        </div>
+                    </button>
+                    <div class="px-6 pb-6 text-sm text-zinc-400 hidden leading-relaxed border-t border-white/5 pt-4">
+                        Athletes who train consistently and care about performance, recovery, and discipline.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Luxury Monochromatic Footer -->
+    <footer class="bg-black text-white py-24 px-6 border-t border-zinc-900">
+        <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center space-y-10 md:space-y-0">
+            <div class="space-y-3">
+                <div class="flex items-center gap-3">
+                    <span class="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_12px_#ffffff]"></span>
+                    <h2 class="text-2xl font-black tracking-[0.25em] uppercase">ANTHORX</h2>
+                </div>
+                <p class="text-xs font-mono text-zinc-500 max-w-sm">Performance begins before the workout.</p>
+            </div>
+
+            <div class="flex flex-wrap gap-8 text-[11px] font-mono tracking-widest text-zinc-400 uppercase">
+                <a href="#" class="hover:text-white transition-colors">Instagram</a>
+                <a href="#" class="hover:text-white transition-colors">X</a>
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+
+        <div
+            class="max-w-7xl mx-auto mt-16 pt-8 border-t border-zinc-900/80 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-zinc-600">
+            <p>© 2026 ANTHORX. ALL RIGHTS RESERVED.</p>
+            <p class="mt-4 sm:mt-0 text-zinc-400">TRAIN DIFFERENT // SCREENLESS PERFORMANCE</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Initialize Icons
+        lucide.createIcons();
+
+        // 2. Interactive Pure Monochrome Wave Canvas
+        const canvas = document.getElementById('kineticCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        let mouse = { x: width / 2, y: height / 2 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        let step = 0;
+        function renderKineticWaves() {
+            ctx.clearRect(0, 0, width, height);
+            step += 0.012;
+
+            // Pure luxury monochrome silver & white waves
+            const waves = [
+                { color: 'rgba(255, 255, 255, 0.09)', freq: 0.003, speed: step, amp: 40 },
+                { color: 'rgba(200, 200, 210, 0.05)', freq: 0.004, speed: step * 1.25, amp: 55 },
+                { color: 'rgba(255, 255, 255, 0.03)', freq: 0.002, speed: step * 0.7, amp: 30 }
+            ];
+
+            waves.forEach(wave => {
+                ctx.beginPath();
+                ctx.strokeStyle = wave.color;
+                ctx.lineWidth = 1.2;
+
+                for (let x = 0; x < width; x += 10) {
+                    const dist = Math.hypot(x - mouse.x, height / 2 - mouse.y);
+                    const mouseAmp = Math.max(0, (300 - dist) / 300) * 35;
+
+                    const y = height / 2 + Math.sin(x * wave.freq + wave.speed) * (wave.amp + mouseAmp);
+                    if (x === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+            });
+
+            requestAnimationFrame(renderKineticWaves);
+        }
+
+        window.onload = function () {
+            renderKineticWaves();
+            initCounters();
+        };
+
+        // 3. FAQ Accordion Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i, svg');
+            const isOpen = !content.classList.contains('hidden');
+
+            document.querySelectorAll('#faq .border > div:last-child').forEach(el => {
+                el.classList.add('hidden');
+            });
+            document.querySelectorAll('#faq svg').forEach(svg => {
+                svg.style.transform = 'rotate(0deg)';
+            });
+
+            if (!isOpen) {
+                content.classList.remove('hidden');
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // 4. Form Submit with Dynamic Confirmation
+        document.getElementById('waitlistForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<span>Verifying Allocation...</span>';
+            btn.classList.add('opacity-70');
+
+            setTimeout(() => {
+                document.getElementById('randomId').innerText = Math.floor(1000 + Math.random() * 9000);
+                document.getElementById('successMessage').classList.remove('hidden');
+            }, 600);
+        });
+
+        function resetForm() {
+            document.getElementById('waitlistForm').reset();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<span>Reserve My Spot</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>';
+            btn.classList.remove('opacity-70');
+            document.getElementById('successMessage').classList.add('hidden');
+            lucide.createIcons();
+        }
+
+        // 5. Metric Number Counter Animation On Scroll
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = +entry.target.getAttribute('data-target');
+                        let count = 0;
+                        const increment = target / 40;
+                        const updateCount = () => {
+                            count += increment;
+                            if (count < target) {
+                                entry.target.innerText = Math.ceil(count);
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                entry.target.innerText = target;
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(c => observer.observe(c));
+        }
+    </script>
+</body>
+
+</html>
